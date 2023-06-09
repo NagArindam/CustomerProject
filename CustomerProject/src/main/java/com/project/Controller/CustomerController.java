@@ -53,7 +53,7 @@ public class CustomerController {
 				.orElseThrow(() -> new IllegalArgumentException("Entered Invalid Customer Id: "+id));
 		existingCustomer.setName(updatedCus.getName());
 		existingCustomer.setEmail(updatedCus.getEmail());
-		existingCustomer.setPhoneNumber(updatedCus.getPhoneNumber());
+		existingCustomer.setPhonenumber(updatedCus.getPhonenumber());
 		
 		return CustomerRepo.save(existingCustomer);
 		
