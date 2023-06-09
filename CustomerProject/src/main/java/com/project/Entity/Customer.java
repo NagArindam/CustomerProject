@@ -4,66 +4,74 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
 
 @Entity
+@Data
 public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int ID;
-	private String Name;
-	private String Email;
-	private String PhoneNumber;
+	private int id;
+	private String name;
 	
-	public int getID() {
-		return ID;
+	@NotNull
+	@Size(min = 15, message = "Invalid Email [ contains at least 15 characters ]")
+	private String email;
+	private String phonenumber;
+	
+	public int getId() {
+		return id;
 	}
 
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 
-	public String getPhoneNumber() {
-		return PhoneNumber;
+	public String getPhonenumber() {
+		return phonenumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		PhoneNumber = phoneNumber;
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", email=" + email + ", phonenumber=" + phonenumber + "]";
+	}
+
+	public Customer(int id, String name, String email, String phonenumber) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.phonenumber = phonenumber;
 	}
 
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Customer(int iD, String name, String email, String phoneNumber) {
-		super();
-		ID = iD;
-		Name = name;
-		Email = email;
-		PhoneNumber = phoneNumber;
-	}
-
-	@Override
-	public String toString() {
-		return "Customer [ID=" + ID + ", Name=" + Name + ", Email=" + Email + ", PhoneNumber=" + PhoneNumber + "]";
-	}
+	
 	
 	
 	
